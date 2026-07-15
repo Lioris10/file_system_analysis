@@ -288,3 +288,8 @@ The first implementation should include:
 - Per-file status and error indication.
 
 The navigation pane, export action, and details preview panel can be added after the core scan/summarize flow works reliably.
+
+
+## 15. MVP UI Implementation Status
+
+The first coded UI implementation includes `MainWindow`, `FileTableModel`, and a Qt application bootstrap. It supports folder browsing, recursive scan selection, metadata-only scanning, scan-and-summarize, a File Explorer-style details table, a status bar, and a progress indicator. Long-running work is still synchronous in this iteration and should be moved to background workers in the next UI milestone.

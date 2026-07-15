@@ -60,3 +60,14 @@ The next implementation step is to add a LangGraph node that calls a LangChain m
 | `.pptx` | Implemented when `python-pptx` is installed. |
 | `.xls`, `.xlsx` | Implemented when `pandas` plus spreadsheet engines are installed. |
 | `.doc`, `.ppt` | Reported as failed until Word/PowerPoint or LibreOffice conversion support is added. |
+
+
+## Initial Desktop UI
+
+The MVP now includes a first PySide6 desktop UI under `src/file_system_analysis/ui`. The UI can be launched with:
+
+```powershell
+poetry run file_system_analysis --gui
+```
+
+If no folder path is supplied to the entry point, the application also attempts to launch the GUI. The UI provides a File Explorer-style starting point with a toolbar, folder path field, Browse button, recursive scanning option, details table, progress bar, and status bar. The current implementation runs the backend pipeline synchronously and should later be moved to `QThreadPool`/worker signals as described in the UI specification.

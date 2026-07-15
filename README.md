@@ -91,3 +91,10 @@ poetry run file_system_analysis C:\Users\User\Documents --recursive --pretty
 ```
 
 The command scans supported files, extracts metadata, reads supported content, creates deterministic summaries, and prints JSON records for the future desktop UI.
+
+
+Launch the initial PySide6 desktop UI after installing dependencies:
+
+```powershell
+poetry run file_system_analysis --gui
+```
