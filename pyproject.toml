@@ -1,39 +1,58 @@
-[tool.poetry]
+[project]
 name = "file-system-analysis"
 version = "0.1.0"
 description = "Windows desktop application specification for filesystem analysis and provider-neutral LLM summarization."
-authors = ["Lioris10 <lior@crosstech.co.il>"]
-license = "Apache-2.0"
 readme = "README.md"
-packages = [{ include = "file_system_analysis", from = "src" }]
+requires-python = ">=3.12,<3.14"
+license = "Apache-2.0"
+authors = [
+  { name = "Lioris10", email = "lior@crosstech.co.il" }
+]
+keywords = ["filesystem", "langchain", "langgraph", "llm", "summarization", "windows"]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Environment :: Win32 (MS Windows)",
+  "Intended Audience :: End Users/Desktop",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Operating System :: Microsoft :: Windows",
+]
+dependencies = [
+  "PySide6>=6.7,<7.0",
+  "PyYAML>=6.0.2,<7.0",
+  "langchain>=0.2,<0.4",
+  "langgraph>=0.2,<0.4",
+  "langchain-openai>=0.1,<0.4",
+  "langchain-google-genai>=1.0,<3.0",
+  "langchain-anthropic>=0.1,<0.4",
+  "langchain-ollama>=0.1,<0.4",
+  "pypdf>=4.0,<6.0",
+  "python-docx>=1.1,<2.0",
+  "python-pptx>=0.6.23,<2.0",
+  "pandas>=2.2,<3.0",
+  "openpyxl>=3.1,<4.0",
+  "xlrd>=2.0.1,<3.0",
+  "charset-normalizer>=3.3,<4.0",
+  "pywin32>=306,<400; sys_platform == 'win32'",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.12,<4.0"
-PySide6 = "^6.7.0"
-PyYAML = "^6.0.2"
-langchain = "^0.2.0"
-langgraph = "^0.2.0"
-langchain-openai = "^0.1.0"
-langchain-google-genai = "^1.0.0"
-langchain-anthropic = "^0.1.0"
-langchain-ollama = "^0.1.0"
-pypdf = "^4.0.0"
-python-docx = "^1.1.0"
-python-pptx = "^0.6.23"
-pandas = "^2.2.0"
-openpyxl = "^3.1.0"
-xlrd = "^2.0.1"
-charset-normalizer = "^3.3.0"
-pywin32 = { version = "^306", markers = "sys_platform == 'win32'" }
+[project.urls]
+Homepage = "https://github.com/Lioris10/File_System_Analysis"
+Repository = "https://github.com/Lioris10/File_System_Analysis"
+Documentation = "https://github.com/Lioris10/File_System_Analysis/tree/main/docs"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.0.0"
-ruff = "^0.5.0"
-pyinstaller = "^6.0.0"
-
-[tool.poetry.scripts]
+[project.scripts]
 file-system-analysis = "file_system_analysis.main:main"
 
+[tool.poetry]
+packages = [{ include = "file_system_analysis", from = "src" }]
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.0,<9.0"
+ruff = ">=0.5,<1.0"
+pyinstaller = ">=6.0,<7.0"
+
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
