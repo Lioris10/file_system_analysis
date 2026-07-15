@@ -36,6 +36,8 @@ File_System_Analysis is a planned Windows desktop application for analyzing file
 
 - [Architecture specification](docs/architecture.md)
 - [Configuration specification](docs/configuration.md)
+- [YAML configuration guide](docs/yaml_configuration_guide.md)
+- [Model version review](docs/model_version_review.md)
 - [Dependency compatibility plan](docs/dependency_compatibility.md)
 - [User interface specification](docs/ui_specification.md)
 - [LangGraph workflow specification](docs/langgraph_workflow.md)

@@ -31,7 +31,7 @@ llm:
   # Change only these values to switch providers.
   # Supported examples below: openai, azure_openai, gemini, anthropic, bedrock, ollama.
   provider: "openai"
-  model_name: "gpt-4o-mini"
+  model_name: "gpt-5.6-terra"
   api_key_env: "OPENAI_API_KEY"
   temperature: 0.2
   timeout_seconds: 60
@@ -42,7 +42,7 @@ llm:
     openai:
       class: "langchain_openai.ChatOpenAI"
       api_key_env: "OPENAI_API_KEY"
-      default_model: "gpt-4o-mini"
+      default_model: "gpt-5.6-terra"
     azure_openai:
       class: "langchain_openai.AzureChatOpenAI"
       api_key_env: "AZURE_OPENAI_API_KEY"
@@ -52,11 +52,11 @@ llm:
     gemini:
       class: "langchain_google_genai.ChatGoogleGenerativeAI"
       api_key_env: "GOOGLE_API_KEY"
-      default_model: "gemini-1.5-pro"
+      default_model: "gemini-3.5-flash"
     anthropic:
       class: "langchain_anthropic.ChatAnthropic"
       api_key_env: "ANTHROPIC_API_KEY"
-      default_model: "claude-3-5-sonnet-latest"
+      default_model: "claude-sonnet-5"
     bedrock:
       class: "langchain_aws.ChatBedrock"
       region_name_env: "AWS_REGION"
@@ -64,7 +64,7 @@ llm:
       aws_access_key_id_env: "AWS_ACCESS_KEY_ID"
       aws_secret_access_key_env: "AWS_SECRET_ACCESS_KEY"
       aws_session_token_env: "AWS_SESSION_TOKEN"
-      default_model: "anthropic.claude-3-5-sonnet-20240620-v1:0"
+      default_model: "anthropic.claude-sonnet-5"
       model_kwargs:
         anthropic_version: "bedrock-2023-05-31"
     ollama:
@@ -73,35 +73,44 @@ llm:
       default_model: "llama3.1"
 
   usage_examples:
-    openai_gpt_4o_mini:
+    openai_gpt_5_6_sol:
       provider: "openai"
-      model_name: "gpt-4o-mini"
+      model_name: "gpt-5.6-sol"
       api_key_env: "OPENAI_API_KEY"
-    openai_gpt_4_1:
+    openai_gpt_5_6_terra:
       provider: "openai"
-      model_name: "gpt-4.1"
+      model_name: "gpt-5.6-terra"
       api_key_env: "OPENAI_API_KEY"
     azure_openai_deployment:
       provider: "azure_openai"
-      model_name: "my-gpt-4o-deployment"
+      model_name: "my-gpt-5-6-deployment"
       api_key_env: "AZURE_OPENAI_API_KEY"
       endpoint_env: "AZURE_OPENAI_ENDPOINT"
-    gemini_pro:
+    gemini_3_5_flash:
       provider: "gemini"
-      model_name: "gemini-1.5-pro"
+      model_name: "gemini-3.5-flash"
+      api_key_env: "GOOGLE_API_KEY"
+    gemini_3_1_pro_preview:
+      provider: "gemini"
+      model_name: "gemini-3.1-pro-preview"
       api_key_env: "GOOGLE_API_KEY"
     anthropic_sonnet:
       provider: "anthropic"
-      model_name: "claude-3-5-sonnet-latest"
+      model_name: "claude-sonnet-5"
       api_key_env: "ANTHROPIC_API_KEY"
     aws_bedrock_claude:
       provider: "bedrock"
-      model_name: "anthropic.claude-3-5-sonnet-20240620-v1:0"
+      model_name: "anthropic.claude-sonnet-5"
+      region_name_env: "AWS_REGION"
+      profile_name_env: "AWS_PROFILE"
+    aws_bedrock_claude_haiku:
+      provider: "bedrock"
+      model_name: "anthropic.claude-haiku-4-5-20251001-v1:0"
       region_name_env: "AWS_REGION"
       profile_name_env: "AWS_PROFILE"
     aws_bedrock_llama:
       provider: "bedrock"
-      model_name: "meta.llama3-1-70b-instruct-v1:0"
+      model_name: "meta.llama4-maverick-17b-instruct-v1:0"
       region_name_env: "AWS_REGION"
       profile_name_env: "AWS_PROFILE"
     local_ollama:
