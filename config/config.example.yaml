@@ -1,5 +1,5 @@
 app:
-  name: "File_System_Analysis"
+  name: "file_system_analysis"
   runtime_python: "3.12+"
   platform: "windows"
   language: "en"

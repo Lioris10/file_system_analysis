@@ -1,8 +1,8 @@
-# File_System_Analysis Architecture Specification
+# file_system_analysis Architecture Specification
 
 ## 1. Purpose
 
-File_System_Analysis is a Python 3.12+ Windows desktop application that scans a user-selected folder, displays file metadata in a File Explorer-style table, extracts text from supported documents, and creates a concise summary for each file by using an externally configured LLM through LangChain and LangGraph.
+file_system_analysis is a Python 3.12+ Windows desktop application that scans a user-selected folder, displays file metadata in a File Explorer-style table, extracts text from supported documents, and creates a concise summary for each file by using an externally configured LLM through LangChain and LangGraph.
 
 ## 2. Technology Stack
 
@@ -114,7 +114,7 @@ Changing the provider to Gemini or Anthropic should require only a YAML change a
 ## 6. Project Directory Tree
 
 ```text
-File_System_Analysis/
+file_system_analysis/
 ├── README.md
 ├── pyproject.toml
 ├── config/

@@ -1,6 +1,6 @@
 # YAML Configuration Guide
 
-This guide explains how to configure `config/config.example.yaml` for the File_System_Analysis application.
+This guide explains how to configure `config/config.example.yaml` for the file_system_analysis application.
 
 ## 1. Basic Rule
 
@@ -10,7 +10,7 @@ The application is designed so runtime choices are made through YAML. The code s
 
 ```yaml
 app:
-  name: "File_System_Analysis"
+  name: "file_system_analysis"
   runtime_python: "3.12+"
   platform: "windows"
   language: "en"

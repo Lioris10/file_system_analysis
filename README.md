@@ -1,6 +1,6 @@
-# File_System_Analysis
+# file_system_analysis
 
-File_System_Analysis is a planned Windows desktop application for analyzing files in a local folder, extracting supported document content, and generating concise LLM summaries through a provider-neutral LangChain integration orchestrated by LangGraph.
+file_system_analysis is a planned Windows desktop application for analyzing files in a local folder, extracting supported document content, and generating concise LLM summaries through a provider-neutral LangChain integration orchestrated by LangGraph.
 
 ## Core Requirements
 
@@ -46,7 +46,7 @@ File_System_Analysis is a planned Windows desktop application for analyzing file
 ## Project Structure
 
 ```text
-File_System_Analysis/
+file_system_analysis/
 ├── config/
 │   └── config.example.yaml
 ├── docs/

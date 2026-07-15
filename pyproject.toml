@@ -1,5 +1,5 @@
 [project]
-name = "file-system-analysis"
+name = "file_system_analysis"
 version = "0.1.0"
 description = "Windows desktop application specification for filesystem analysis and provider-neutral LLM summarization."
 readme = "README.md"
@@ -39,12 +39,12 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Lioris10/File_System_Analysis"
-Repository = "https://github.com/Lioris10/File_System_Analysis"
-Documentation = "https://github.com/Lioris10/File_System_Analysis/tree/main/docs"
+Homepage = "https://github.com/Lioris10/file_system_analysis"
+Repository = "https://github.com/Lioris10/file_system_analysis"
+Documentation = "https://github.com/Lioris10/file_system_analysis/tree/main/docs"
 
 [project.scripts]
-file-system-analysis = "file_system_analysis.main:main"
+file_system_analysis = "file_system_analysis.main:main"
 
 [tool.poetry]
 packages = [{ include = "file_system_analysis", from = "src" }]
