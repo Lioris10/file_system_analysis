@@ -1,0 +1,135 @@
+app:
+  name: "file_system_analysis"
+  runtime_python: "3.12+"
+  platform: "windows"
+  language: "en"
+  rtl_enabled: true
+  theme: "light"
+
+ui:
+  default_layout_direction: "rtl"
+  table_page_size: 200
+  show_full_path: false
+  date_time_format: "%Y-%m-%d %H:%M:%S"
+
+scanner:
+  recursive_default: false
+  max_file_size_mb: 50
+  supported_extensions:
+    - ".txt"
+    - ".md"
+    - ".pdf"
+    - ".doc"
+    - ".docx"
+    - ".ppt"
+    - ".pptx"
+    - ".csv"
+    - ".xls"
+    - ".xlsx"
+
+llm:
+  # Change only these values to switch providers.
+  # Supported examples below: openai, azure_openai, gemini, anthropic, bedrock, ollama.
+  provider: "openai"
+  model_name: "gpt-5.6-terra"
+  api_key_env: "OPENAI_API_KEY"
+  temperature: 0.2
+  timeout_seconds: 60
+  max_retries: 2
+
+  # Provider examples. Only the active provider block is used.
+  providers:
+    openai:
+      class: "langchain_openai.ChatOpenAI"
+      api_key_env: "OPENAI_API_KEY"
+      default_model: "gpt-5.6-terra"
+    azure_openai:
+      class: "langchain_openai.AzureChatOpenAI"
+      api_key_env: "AZURE_OPENAI_API_KEY"
+      endpoint_env: "AZURE_OPENAI_ENDPOINT"
+      api_version: "2024-06-01"
+      default_model: "deployment-name"
+    gemini:
+      class: "langchain_google_genai.ChatGoogleGenerativeAI"
+      api_key_env: "GOOGLE_API_KEY"
+      default_model: "gemini-3.5-flash"
+    anthropic:
+      class: "langchain_anthropic.ChatAnthropic"
+      api_key_env: "ANTHROPIC_API_KEY"
+      default_model: "claude-sonnet-5"
+    bedrock:
+      class: "langchain_aws.ChatBedrock"
+      region_name_env: "AWS_REGION"
+      profile_name_env: "AWS_PROFILE"
+      aws_access_key_id_env: "AWS_ACCESS_KEY_ID"
+      aws_secret_access_key_env: "AWS_SECRET_ACCESS_KEY"
+      aws_session_token_env: "AWS_SESSION_TOKEN"
+      default_model: "anthropic.claude-sonnet-5"
+      model_kwargs:
+        anthropic_version: "bedrock-2023-05-31"
+    ollama:
+      class: "langchain_ollama.ChatOllama"
+      base_url: "http://localhost:11434"
+      default_model: "llama3.1"
+
+  usage_examples:
+    openai_gpt_5_6_sol:
+      provider: "openai"
+      model_name: "gpt-5.6-sol"
+      api_key_env: "OPENAI_API_KEY"
+    openai_gpt_5_6_terra:
+      provider: "openai"
+      model_name: "gpt-5.6-terra"
+      api_key_env: "OPENAI_API_KEY"
+    azure_openai_deployment:
+      provider: "azure_openai"
+      model_name: "my-gpt-5-6-deployment"
+      api_key_env: "AZURE_OPENAI_API_KEY"
+      endpoint_env: "AZURE_OPENAI_ENDPOINT"
+    gemini_3_5_flash:
+      provider: "gemini"
+      model_name: "gemini-3.5-flash"
+      api_key_env: "GOOGLE_API_KEY"
+    gemini_3_1_pro_preview:
+      provider: "gemini"
+      model_name: "gemini-3.1-pro-preview"
+      api_key_env: "GOOGLE_API_KEY"
+    anthropic_sonnet:
+      provider: "anthropic"
+      model_name: "claude-sonnet-5"
+      api_key_env: "ANTHROPIC_API_KEY"
+    aws_bedrock_claude:
+      provider: "bedrock"
+      model_name: "anthropic.claude-sonnet-5"
+      region_name_env: "AWS_REGION"
+      profile_name_env: "AWS_PROFILE"
+    aws_bedrock_claude_haiku:
+      provider: "bedrock"
+      model_name: "anthropic.claude-haiku-4-5-20251001-v1:0"
+      region_name_env: "AWS_REGION"
+      profile_name_env: "AWS_PROFILE"
+    aws_bedrock_llama:
+      provider: "bedrock"
+      model_name: "meta.llama4-maverick-17b-instruct-v1:0"
+      region_name_env: "AWS_REGION"
+      profile_name_env: "AWS_PROFILE"
+    local_ollama:
+      provider: "ollama"
+      model_name: "llama3.1"
+      base_url: "http://localhost:11434"
+
+summarization:
+  output_max_chars: 2000
+  preserve_source_language: true
+  chunk_size_chars: 12000
+  chunk_overlap_chars: 500
+  prompt_template: |
+    You are a document summarization assistant.
+    Summarize the document in the same language as the document.
+    If the document is in Hebrew, respond in Hebrew.
+    If the document is in English, respond in English.
+    Do not translate.
+    Write a concise summary up to {output_max_chars} characters.
+
+    Document content:
+    {content}
