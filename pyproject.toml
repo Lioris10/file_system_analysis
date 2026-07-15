@@ -1,14 +1,38 @@
 [tool.poetry]
-name = "first-project"
-version = "1.0.0"
-description = "Calling main, internal functions, external functions"
+name = "file-system-analysis"
+version = "0.1.0"
+description = "Windows desktop application specification for filesystem analysis and provider-neutral LLM summarization."
 authors = ["Lioris10 <lior@crosstech.co.il>"]
-license = "Apache 2.0"
+license = "Apache-2.0"
 readme = "README.md"
+packages = [{ include = "file_system_analysis", from = "src" }]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.12,<4.0"
+PySide6 = "^6.7.0"
+PyYAML = "^6.0.2"
+langchain = "^0.2.0"
+langgraph = "^0.2.0"
+langchain-openai = "^0.1.0"
+langchain-google-genai = "^1.0.0"
+langchain-anthropic = "^0.1.0"
+langchain-ollama = "^0.1.0"
+pypdf = "^4.0.0"
+python-docx = "^1.1.0"
+python-pptx = "^0.6.23"
+pandas = "^2.2.0"
+openpyxl = "^3.1.0"
+xlrd = "^2.0.1"
+charset-normalizer = "^3.3.0"
+pywin32 = { version = "^306", markers = "sys_platform == 'win32'" }
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+ruff = "^0.5.0"
+pyinstaller = "^6.0.0"
+
+[tool.poetry.scripts]
+file-system-analysis = "file_system_analysis.main:main"
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,0 +1,77 @@
+app:
+  name: "File_System_Analysis"
+  runtime_python: "3.12+"
+  platform: "windows"
+  language: "en"
+  rtl_enabled: true
+  theme: "light"
+
+ui:
+  default_layout_direction: "rtl"
+  table_page_size: 200
+  show_full_path: false
+  date_time_format: "%Y-%m-%d %H:%M:%S"
+
+scanner:
+  recursive_default: false
+  max_file_size_mb: 50
+  supported_extensions:
+    - ".txt"
+    - ".md"
+    - ".pdf"
+    - ".doc"
+    - ".docx"
+    - ".ppt"
+    - ".pptx"
+    - ".csv"
+    - ".xls"
+    - ".xlsx"
+
+llm:
+  provider: "openai"
+  model_name: "gpt-4o-mini"
+  api_key_env: "OPENAI_API_KEY"
+  temperature: 0.2
+  timeout_seconds: 60
+  max_retries: 2
+
+  # Provider examples. Only the active provider block is used.
+  providers:
+    openai:
+      class: "langchain_openai.ChatOpenAI"
+      api_key_env: "OPENAI_API_KEY"
+      default_model: "gpt-4o-mini"
+    azure_openai:
+      class: "langchain_openai.AzureChatOpenAI"
+      api_key_env: "AZURE_OPENAI_API_KEY"
+      endpoint_env: "AZURE_OPENAI_ENDPOINT"
+      api_version: "2024-06-01"
+      default_model: "deployment-name"
+    gemini:
+      class: "langchain_google_genai.ChatGoogleGenerativeAI"
+      api_key_env: "GOOGLE_API_KEY"
+      default_model: "gemini-1.5-pro"
+    anthropic:
+      class: "langchain_anthropic.ChatAnthropic"
+      api_key_env: "ANTHROPIC_API_KEY"
+      default_model: "claude-3-5-sonnet-latest"
+    ollama:
+      class: "langchain_ollama.ChatOllama"
+      base_url: "http://localhost:11434"
+      default_model: "llama3.1"
+
+summarization:
+  output_max_chars: 2000
+  preserve_source_language: true
+  chunk_size_chars: 12000
+  chunk_overlap_chars: 500
+  prompt_template: |
+    You are a document summarization assistant.
+    Summarize the document in the same language as the document.
+    If the document is in Hebrew, respond in Hebrew.
+    If the document is in English, respond in English.
+    Do not translate.
+    Write a concise summary up to {output_max_chars} characters.
+
+    Document content:
+    {content}
