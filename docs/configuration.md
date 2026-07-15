@@ -37,14 +37,34 @@ llm:
   api_key_env: "ANTHROPIC_API_KEY"
 ```
 
+Example AWS Bedrock configuration using a Claude model hosted by Bedrock:
+
+```yaml
+llm:
+  provider: "bedrock"
+  model_name: "anthropic.claude-3-5-sonnet-20240620-v1:0"
+  region_name_env: "AWS_REGION"
+  profile_name_env: "AWS_PROFILE"
+```
+
+Example AWS Bedrock configuration using a Llama model hosted by Bedrock:
+
+```yaml
+llm:
+  provider: "bedrock"
+  model_name: "meta.llama3-1-70b-instruct-v1:0"
+  region_name_env: "AWS_REGION"
+  profile_name_env: "AWS_PROFILE"
+```
+
 ## Generic Model Factory Contract
 
 The planned `ModelFactory` must:
 
 1. Read `llm.provider`.
 2. Locate the provider definition under `llm.providers`.
-3. Resolve the provider class, for example `langchain_openai.ChatOpenAI`.
-4. Read the configured API key environment variable.
+3. Resolve the provider class, for example `langchain_openai.ChatOpenAI` or `langchain_aws.ChatBedrock`.
+4. Read the configured credential source. API-based providers use an API key environment variable, while AWS Bedrock may use `AWS_PROFILE`, `AWS_REGION`, or standard AWS access key environment variables.
 5. Instantiate the model with `model_name`, temperature, timeout, and retry settings.
 6. Return a LangChain-compatible chat model.
 

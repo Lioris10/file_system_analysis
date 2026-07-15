@@ -33,6 +33,7 @@ poetry install
 | Gemini Provider | `langchain-google-genai>=1.0,<3.0` | Enables Google Gemini chat models through LangChain. |
 | Anthropic Provider | `langchain-anthropic>=0.1,<0.4` | Enables Anthropic Claude chat models through LangChain. |
 | Local Provider | `langchain-ollama>=0.1,<0.4` | Enables local Ollama models through LangChain. |
+| AWS Bedrock Provider | `langchain-aws>=0.1,<0.4` | Enables AWS Bedrock-hosted models such as Anthropic Claude and Meta Llama through LangChain. |
 | PDF | `pypdf>=4.0,<6.0` | Text extraction from PDF files. |
 | Word | `python-docx>=1.1,<2.0` | Text extraction from DOCX files. |
 | PowerPoint | `python-pptx>=0.6.23,<2.0` | Text extraction from PPTX files. |
@@ -42,4 +43,4 @@ poetry install
 
 ## Provider Switching Rule
 
-Application code must depend on LangChain interfaces and a YAML-driven model factory. Switching from OpenAI to Gemini, Anthropic, Azure OpenAI, or Ollama must require only configuration changes and installed dependencies.
+Application code must depend on LangChain interfaces and a YAML-driven model factory. Switching from OpenAI to Gemini, Anthropic, Azure OpenAI, AWS Bedrock, or Ollama must require only configuration changes and installed dependencies.
